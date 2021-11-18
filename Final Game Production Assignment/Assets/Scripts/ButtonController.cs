@@ -27,7 +27,7 @@ public class ButtonController : MonoBehaviour
 
         if (Input.GetKeyUp(keyToPress))
         {
-            theSR.sprite = default;
+            theSR.sprite = defaultImage;
         }
 
         
