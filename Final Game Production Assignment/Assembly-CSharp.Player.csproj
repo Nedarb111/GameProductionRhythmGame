@@ -55,8 +55,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ButtonController.cs" />
     <Compile Include="Assets\Scripts\NoteObject.cs" />
-    <Compile Include="Assets\Scripts\BeatScroller.cs" />
     <Compile Include="Assets\Rhythm Game Tutorial\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\BeatScroller.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art stuff\instant_dungeon_artpack\instant_dungeon_artpack_README.txt" />
