@@ -11,6 +11,9 @@ public class Player_Script : MonoBehaviour
 
     Vector2 movement;
 
+    private void Start()
+    {
+    }
 
     void Update()
     {

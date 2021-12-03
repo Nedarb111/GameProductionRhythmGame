@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,10 +14,17 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public TextMeshProUGUI healthtext;
+
+    public int Player_Health = 20;
+    public int healthPerNote = 1;
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        healthtext.text = "Health: " + Player_Health;
+
     }
 
     // Update is called once per frame
@@ -46,6 +54,14 @@ public class GameManager : MonoBehaviour
     public void NoteMissed()
     {
         Debug.Log("Missed Note");
+        Player_Health = Player_Health - healthPerNote;
+        healthtext.text = "Health: " + Player_Health;
+        Debug.Log(Player_Health);
+
+        if(Player_Health <= 0)
+        {
+            Player_Health = 0;
+        }
     }
 
 }
