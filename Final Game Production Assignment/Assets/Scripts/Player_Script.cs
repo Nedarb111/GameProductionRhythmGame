@@ -6,6 +6,7 @@ public class Player_Script : MonoBehaviour
 {
     public float moveSpeed = 5f;
 
+    public SpriteRenderer spriterenderer;
     public Rigidbody2D rb;
     //public Animator animator;
 
@@ -17,6 +18,7 @@ public class Player_Script : MonoBehaviour
 
     void Update()
     {
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -28,11 +30,11 @@ public class Player_Script : MonoBehaviour
         Vector3 characterScale = transform.localScale;
         if (Input.GetAxis("Horizontal") < 0)
         {
-            characterScale.x = -1;
+            spriterenderer.flipX = true;
         }
         if (Input.GetAxis("Horizontal") > 0)
         {
-            characterScale.x = 1;
+            spriterenderer.flipX = false;
         }
         transform.localScale = characterScale;
 
