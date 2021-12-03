@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Activator
   - Enemy
+  - FinalNote
   layers:
   - Default
   - TransparentFX

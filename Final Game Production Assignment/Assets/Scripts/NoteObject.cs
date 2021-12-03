@@ -5,6 +5,7 @@ using UnityEngine;
 public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
+    bool obtained = false;
 
     public KeyCode keyToPress;
     // Start is called before the first frame update
@@ -14,15 +15,15 @@ public class NoteObject : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update ()
     {
       if(Input.GetKeyDown(keyToPress))
         {
             if(canBePressed)
             {
-                gameObject.SetActive(false);
-
                 GameManager.instance.NoteHit();
+                obtained = true;
+                gameObject.SetActive(false);
             }
         }
     }
@@ -35,11 +36,13 @@ public class NoteObject : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Activator")
-        {
-            canBePressed = false;
-
-            GameManager.instance.NoteMissed();
-        }
+            if (other.tag == "Activator")
+            {
+                canBePressed = false;
+                if (!obtained)
+                {
+                GameManager.instance.NoteMissed();
+            }
+            }
     }
 }
