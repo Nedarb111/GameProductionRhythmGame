@@ -86,4 +86,15 @@ public class GameManager : MonoBehaviour
         UIHealthbar.SetPlayerHealth(Player_Health);
     }
 
+    public void GainHealth()
+    {
+        Player_Health += 7;
+        UIHealthbar.SetPlayerHealth(Player_Health);
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("healthPotionNum", 0);
+    }
+
 }

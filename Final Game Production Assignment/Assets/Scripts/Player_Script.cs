@@ -64,6 +64,9 @@ public class Player_Script : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
-
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("healthPotionNum", 0);
+    }
 
 }
