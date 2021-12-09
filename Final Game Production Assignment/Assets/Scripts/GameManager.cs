@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public healthBar UIHealthbar;
     public AudioSource theMusic;
 
     public bool startPlaying;
@@ -13,8 +14,6 @@ public class GameManager : MonoBehaviour
     public BeatScroller theBS;
 
     public static GameManager instance;
-
-    public TextMeshProUGUI healthtext;
 
     public int Player_Health = 20;
     public int healthPerNormalNote = 0;
@@ -27,8 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        healthtext.text = "Health: " + Player_Health;
-
+        UIHealthbar.SetPlayerHealth(Player_Health);
     }
 
     // Update is called once per frame
@@ -78,13 +76,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Missed Note");
         Player_Health = Player_Health - healthPerPerfectNote;
-        healthtext.text = "Health: " + Player_Health;
         Debug.Log(Player_Health);
 
         if(Player_Health <= 0)
         {
             Player_Health = 0;
         }
+
+        UIHealthbar.SetPlayerHealth(Player_Health);
     }
 
 }

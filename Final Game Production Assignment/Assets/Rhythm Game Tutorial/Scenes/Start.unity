@@ -15956,10 +15956,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ddd1700e3db0f4aaa5af6558fc0faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIHealthbar: {fileID: 1657991493}
   theMusic: {fileID: 1351494401}
   startPlaying: 0
   theBS: {fileID: 1605099647}
-  healthtext: {fileID: 0}
   Player_Health: 20
   healthPerNormalNote: 0
   healthPerGoodNote: 0
