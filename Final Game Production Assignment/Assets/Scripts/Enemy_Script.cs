@@ -1,23 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Enemy_Script : MonoBehaviour
 {
-    public AudioSource tickSource;
+    private GameObject player;
+    private float playerDistance; // distance from player
+    public GameObject enemySpriteOrigin;
+    public float detectionDistance; // how far from us does player need to be for attack
+    public float speed;
 
     void Start()
     {
-        tickSource = GetComponent<AudioSource>();
+        player = GameObject.Find("Player");
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        playerDistance = Vector2.Distance(transform.position, player.transform.position);
+        if (playerDistance <= detectionDistance)
         {
-            tickSource.Play();
-            SceneManager.LoadScene(1);
+            Vector3 targ = player.transform.position - transform.position;
+            targ.z = 0f;
+            float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            enemySpriteOrigin.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -transform.rotation.z));
+
+            transform.position += transform.right * Time.deltaTime * speed;
         }
+    }
+
+    private void LateUpdate()
+    {
+        
     }
 
 }
