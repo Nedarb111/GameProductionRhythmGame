@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_Script : MonoBehaviour
 {
     private GameObject player;
-    private float playerDistance; // distance from player
+    private float playerDistance; // current distance from player
     public GameObject enemySpriteOrigin;
     public float detectionDistance; // how far from us does player need to be for attack
     public float speed;
@@ -28,11 +28,6 @@ public class Enemy_Script : MonoBehaviour
 
             transform.position += transform.right * Time.deltaTime * speed;
         }
-    }
-
-    private void LateUpdate()
-    {
-        
     }
 
 }
