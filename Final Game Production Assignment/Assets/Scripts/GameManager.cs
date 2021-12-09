@@ -17,7 +17,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI healthtext;
 
     public int Player_Health = 20;
-    public int healthPerNote = 1;
+    public int healthPerNormalNote = 0;
+    public int healthPerGoodNote = 0;
+    public int healthPerPerfectNote = 1;
+
+    public int currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +34,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!startPlaying)
+        if (!startPlaying)
         {
-            if(Input.anyKeyDown)
+            if (Input.anyKeyDown)
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
@@ -51,10 +55,29 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Hit On Time");
     }
+
+    public void NormalHit()
+    {
+        currentHealth += healthPerNormalNote;
+        NoteHit();
+    }
+    public void GoodHit()
+    {
+        currentHealth += healthPerGoodNote;
+        NoteHit();
+    }
+
+    public void PerfectHit()
+    {
+        currentHealth += healthPerPerfectNote;
+        NoteHit();
+    }
+
+
     public void NoteMissed()
     {
         Debug.Log("Missed Note");
-        Player_Health = Player_Health - healthPerNote;
+        Player_Health = Player_Health - healthPerPerfectNote;
         healthtext.text = "Health: " + Player_Health;
         Debug.Log(Player_Health);
 

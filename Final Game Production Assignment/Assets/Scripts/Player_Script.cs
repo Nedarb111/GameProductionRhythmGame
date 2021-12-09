@@ -28,14 +28,24 @@ public class Player_Script : MonoBehaviour
 
         // Flip player when x change, use only if you want
         Vector3 characterScale = transform.localScale;
-        if (Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0) // idle
         {
-            spriterenderer.flipX = true;
+            GetComponent<Animator>().SetBool("walking", false);
         }
-        if (Input.GetAxis("Horizontal") > 0)
+        else // moving
         {
-            spriterenderer.flipX = false;
+            GetComponent<Animator>().SetBool("walking", true);
+
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                spriterenderer.flipX = true;
+            }
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                spriterenderer.flipX = false;
+            }
         }
+
         transform.localScale = characterScale;
 
     }

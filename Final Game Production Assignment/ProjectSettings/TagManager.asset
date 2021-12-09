@@ -41,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 304261299
+    locked: 0
   - name: Ground
     uniqueID: 1940508285
     locked: 0
@@ -53,6 +56,6 @@ TagManager:
   - name: Arrows
     uniqueID: 1282139067
     locked: 0
-  - name: background
-    uniqueID: 304261299
+  - name: particles
+    uniqueID: 2347278235
     locked: 0
